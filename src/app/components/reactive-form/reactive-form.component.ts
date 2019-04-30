@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ageValidator } from 'app/shared/valid-age.directive';
-import { genders } from 'app/shared/genders';
+import { ageValidator } from './../../shared/valid-age.directive';
+import { genders } from './../../shared/genders';
 
 @Component({
   selector: 'app-reactive-form',

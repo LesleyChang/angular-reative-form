@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { genders } from 'app/shared/genders';
+import { genders } from './../../shared/genders';
 
 @Component({
   selector: 'app-template-driven-form',
