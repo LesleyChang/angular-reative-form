@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { ageValidator } from './../../shared/valid-age.directive';
-import { genders } from './../../shared/genders';
+import { ageValidator } from '../../shared/valid-age.directive';
+import { genders } from '../../shared/genders';
+import { genderIdRelatedValidator } from '../../shared/valid-gender-related-id.directive';
+import { CrossFieldsErrorMatcher } from '../../shared/cross-fields-error-matcher';
 
 @Component({
   selector: 'app-reactive-form',
@@ -11,18 +13,27 @@ import { genders } from './../../shared/genders';
 export class ReactiveFormComponent implements OnInit {
   genders: string[] = genders;
   group: FormGroup;
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit() {
-    this.group = this.fb.group({
-      name: [null, [Validators.required, Validators.minLength(2)]],
-      age: [null, [Validators.required, ageValidator]],
-      id: [null, Validators.required],
-      gender: [null]
-    });
-    this.group.valueChanges.subscribe(console.log);
+  errorMatcher: CrossFieldsErrorMatcher;
+  constructor(private fb: FormBuilder,
+    private errorMatcherProvider: CrossFieldsErrorMatcher) {
+    this.errorMatcher = this.errorMatcherProvider;
   }
-  // convenience getter for easy access to form fields
+
+  formModel: FormGroup;
+  ngOnInit() {
+
+    this.group = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      age: ['', [Validators.required, ageValidator]],
+      id: ['', [Validators.required]],
+      gender: ['']
+    },
+      // validators for fromGroup
+      { validators: [genderIdRelatedValidator] });
+    //this.group.valueChanges.subscribe(res => { console.log(this.group) });
+  }
+
+  /** convenience getter for easy access to form fields */
   get form(): { [key: string]: AbstractControl; } { return this.group.controls; }
 
 }

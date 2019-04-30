@@ -1,13 +1,10 @@
 /* Add application styles & imports to this file! */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-body { 
-  font-family: 'Microsoft JhengHei' !important;
-  margin: 0;
-}
-div{
+*{
   font-family: 'Microsoft JhengHei' !important;  
 }
+
 .basic-container {
   padding: 30px;
 }

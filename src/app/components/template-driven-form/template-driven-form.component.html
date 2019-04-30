@@ -1,11 +1,11 @@
-<form novalidate>
+<form #tempForm="ngForm" appValidGenderRelatedId novalidate>
   <div class="row">
     <div class="col-md-12">
       <h5>
         Template Driven Form
       </h5>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-6">
       <mat-form-field class="form-input">
         <input matInput placeholder="姓名" [(ngModel)]="formTemp.name" name="name" required minlength="2"
           #name="ngModel" />
@@ -13,14 +13,14 @@
         <mat-error *ngIf="name.errors?.minlength">姓名長度需至少為2</mat-error>
       </mat-form-field>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-6">
       <mat-form-field class="form-input">
         <input matInput placeholder="年齡" [(ngModel)]="formTemp.age" name="age" required appValidAge #age="ngModel" />
         <mat-error *ngIf="age.errors?.required">年齡為必填</mat-error>
         <mat-error *ngIf="age.errors?.ageValidator">年齡需介於0-120</mat-error>
       </mat-form-field>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-6">
       <mat-form-field class="form-input">
         <input matInput placeholder="身分證字號" [(ngModel)]="formTemp.id" name="id" required #id="ngModel" />
         <mat-error *ngIf="id.errors?.required">身分證字號為必填</mat-error>
@@ -28,15 +28,17 @@
     </div>
     <div class="col-md-3">
       <mat-form-field>
-        <mat-select placeholder="性別" [(ngModel)]="formTemp.gender" name="gender" #gender="ngModel">
+        <mat-select placeholder="性別" [(ngModel)]="formTemp.gender" name="gender" #gender="ngModel"
+          [errorStateMatcher]="errorMatcher">
           <mat-option *ngFor="let g of genders; let i = index;" [value]="g">
             {{g}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="tempForm.errors?.genderIdRelatedValidator">身分證字號和性別不符</mat-error>
       </mat-form-field>
     </div>
   </div>
 </form>
 <div style="margin: 1rem 0;">
-  template value: {{formTemp | json}}
+  data template value: <br />{{formTemp | json}}
 </div>
