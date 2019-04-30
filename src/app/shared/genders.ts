@@ -1,0 +1,1 @@
+export const genders = ['男', '女'];

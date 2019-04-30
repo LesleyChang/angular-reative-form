@@ -1,24 +1,25 @@
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import { LayoutComponent } from './shared/layout/layout.component';
 
-const appRoutes: Routes = [
+
+const routes: Routes = [
   {
-    path:'',
-    redirectTo:'reative-form',
-    pathMatch:'full'
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
-  // {
-  //   path:'reative-form',
-  //   component:
-  // }
-]
+  {
+    path: 'home',
+    component: LayoutComponent
+  },
+  { path: '**', redirectTo: 'home' }
+
+];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

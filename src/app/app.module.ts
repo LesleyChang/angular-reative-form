@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -13,21 +12,28 @@ import {
   MatInputModule,
   MatListModule,
   MatSelectModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatGridListModule,
+  MatCardModule
 } from '@angular/material';
 
-
-import{ SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { LayoutComponent } from './shared/layout/layout.component';
+import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
+import { ValidAgeDirective } from './shared/valid-age.directive';
+import { ValidGenderRelatedIdDirective } from './shared/valid-gender-related-id.directive';
 
 
 @NgModule({
-  imports:[ 
+  imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    BrowserAnimationsModule, 
-    FormsModule,    
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
@@ -36,11 +42,20 @@ import { HelloComponent } from './hello.component';
     MatListModule,
     MatSelectModule,
     MatToolbarModule,
-    SharedModule, 
-     ],
-  declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ]
+    MatGridListModule,
+    MatCardModule,
+  ],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    LayoutComponent,
+    ReactiveFormComponent,
+    TemplateDrivenFormComponent,
+    ValidAgeDirective,
+    ValidGenderRelatedIdDirective
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(router: Router) {}
- }
+  constructor(router: Router) { }
+}

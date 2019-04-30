@@ -1,0 +1,41 @@
+<form [formGroup]="group" novalidate>
+  <div class="row">
+    <div class="col-md-12">
+      <h5>
+        Reactive Form
+      </h5>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field>
+        <input matInput placeholder="姓名" formControlName="name" />
+        <mat-error *ngIf="form.name.errors?.required">姓名為必填</mat-error>
+        <mat-error *ngIf="form.name.errors?.minlength">姓名長度需至少為2</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field>
+        <input matInput placeholder="年齡" formControlName="age" />
+        <mat-error *ngIf="form.age.errors?.required">年齡為必填</mat-error>
+        <mat-error *ngIf="form.age.errors?.ageValidator">年齡需介於0-120</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field>
+        <input matInput placeholder="身分證字號" formControlName="id" />
+        <mat-error *ngIf="form.id.errors?.required">身分證字號為必填</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field>
+        <mat-select placeholder="性別" formControlName="gender">
+          <mat-option *ngFor="let g of genders; let i = index;" [value]="g">
+            {{g}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+<div style="margin: 1rem 0;">
+  form value: {{group.value|json}}
+</div>
