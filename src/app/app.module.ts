@@ -10,10 +10,8 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule,
   MatSelectModule,
   MatToolbarModule,
-  MatGridListModule,
   MatCardModule
 } from '@angular/material';
 
@@ -25,6 +23,7 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
 import { ValidAgeDirective } from './shared/valid-age.directive';
 import { ValidGenderRelatedIdDirective } from './shared/valid-gender-related-id.directive';
+import { AbstractControlsComponent } from './components/abstract-controls/abstract-controls.component';
 
 
 @NgModule({
@@ -39,10 +38,8 @@ import { ValidGenderRelatedIdDirective } from './shared/valid-gender-related-id.
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatListModule,
     MatSelectModule,
     MatToolbarModule,
-    MatGridListModule,
     MatCardModule,
   ],
   declarations: [
@@ -52,7 +49,8 @@ import { ValidGenderRelatedIdDirective } from './shared/valid-gender-related-id.
     ReactiveFormComponent,
     TemplateDrivenFormComponent,
     ValidAgeDirective,
-    ValidGenderRelatedIdDirective
+    ValidGenderRelatedIdDirective,
+    AbstractControlsComponent
   ],
   bootstrap: [AppComponent]
 })

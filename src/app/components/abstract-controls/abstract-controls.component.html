@@ -1,0 +1,34 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+
+            <mat-card>
+                <h5 class="mb-3">Form Control</h5>
+                <label for='name'>Name:</label>
+                <input [formControl]="name" id='name'>
+                <p>name: {{name.value | json}}</p>
+            </mat-card>
+
+            <mat-card>
+                <h5 class="mb-3">Form Array & From Group</h5>
+                <p>Order Form</p>
+                <form [formGroup]="orderForm">
+                    <input formControlName="customerName" placeholder="Customer name">
+                    <input formControlName="email" placeholder="Email">
+                    <div class="my-2" formArrayName="items"
+                        *ngFor="let item of orderForm.get('items').controls; let i = index;">
+                        <div [formGroupName]="i">
+                            <p>item{{i+1}}</p>
+                            <input formControlName="name" placeholder="Item name">
+                            <input formControlName="description" placeholder="Item description">
+                            <input formControlName="price" placeholder="Item price">
+                        </div>
+                    </div>
+                    <button mat-raised-button (click)="addItem()">Add Item</button>
+                </form>
+                <p>order Form: {{orderForm.value | json}}</p>
+            </mat-card>
+
+        </div>
+    </div>
+</div>
