@@ -9,6 +9,7 @@ import { FormControl, FormArray, FormGroup, FormBuilder, Validators } from '@ang
 export class AbstractControlsComponent implements OnInit {
   name: FormControl;
   orderForm: FormGroup;
+  items: FormArray;
 
   constructor(private fb: FormBuilder) { }
 
@@ -30,6 +31,8 @@ export class AbstractControlsComponent implements OnInit {
       email: '',
       items: this.fb.array([this.createItem()])
     });
+
+    this.items = this.orderForm.get('items') as FormArray;
   }
 
   createItem(): FormGroup {
@@ -40,6 +43,6 @@ export class AbstractControlsComponent implements OnInit {
     });
   }
   addItem(): void {
-    (this.orderForm.get('items') as FormArray).push(this.createItem());
+    this.items.push(this.createItem());
   }
 }

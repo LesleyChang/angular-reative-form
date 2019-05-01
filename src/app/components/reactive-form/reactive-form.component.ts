@@ -28,8 +28,9 @@ export class ReactiveFormComponent implements OnInit {
       id: ['', [Validators.required]],
       gender: ['']
     },
-      // validators for fromGroup
+      /** validators for fromGroup */
       { validators: [genderIdRelatedValidator] });
+
     //this.group.valueChanges.subscribe(res => { console.log(this.group) });
   }
 

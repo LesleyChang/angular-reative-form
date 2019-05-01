@@ -1,9 +1,9 @@
 .main-link{
-    font-size: 105%;
+    font-size: 1rem;
     padding: 0px;
 }
 .sub-link{
-    font-size: 60%;
+    font-size: 0.8rem;
     padding:0px 10px !important;    
 }
 mat-toolbar.mat-toolbar-row, .mat-toolbar-single-row {

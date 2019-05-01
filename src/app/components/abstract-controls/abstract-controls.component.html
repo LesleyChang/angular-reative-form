@@ -15,8 +15,7 @@
                 <form [formGroup]="orderForm">
                     <input formControlName="customerName" placeholder="Customer name">
                     <input formControlName="email" placeholder="Email">
-                    <div class="my-2" formArrayName="items"
-                        *ngFor="let item of orderForm.get('items').controls; let i = index;">
+                    <div class="my-2" formArrayName="items" *ngFor="let item of items.controls; let i = index;">
                         <div [formGroupName]="i">
                             <p>item{{i+1}}</p>
                             <input formControlName="name" placeholder="Item name">
